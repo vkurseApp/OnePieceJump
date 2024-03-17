@@ -9,12 +9,12 @@ public class Doodler : MonoBehaviour
     public float MoveDecreaser; // замедление движения по X
     private Rigidbody2D rb;
 
-    public Transform fruct1, fruct2, fruct3, fruct4; // префабы фруктов
+    public Transform GomuGomuFruit, GashaGashaFruit, MokuMokuFruit, HitoHitoFruit; // префабы фруктов
 
 
     private Animator anim;
 
-    IEnumerator ApplyAbility1()
+    IEnumerator ApplyAbilityGomuGomu()
     {
         // Логика применения способности 1 (Гому-Гому Фрукт)
         // Применяем способность
@@ -22,25 +22,25 @@ public class Doodler : MonoBehaviour
                                              // Возвращаем персонажу обычные характеристики
     }
 
-    IEnumerator ApplyAbility2()
+    IEnumerator ApplyAbilityGashaGasha()
     {
-        // Логика применения способности 2 (Вапу но Ми)
+        // Логика применения способности 2 (Гаша Гаша но Ми)
         // Применяем способность
         yield return new WaitForSeconds(1f); // Пример времени действия способности
                                              // Возвращаем персонажу обычные характеристики
     }
 
-    IEnumerator ApplyAbility3()
+    IEnumerator ApplyAbilityMokuMoku()
     {
-        // Логика применения способности 3 (Фува но Ми)
+        // Логика применения способности 3 (Моку Моку но Ми)
         // Применяем способность
         yield return new WaitForSeconds(1f); // Пример времени действия способности
                                              // Возвращаем персонажу обычные характеристики
     }
 
-    IEnumerator ApplyAbility4()
+    IEnumerator ApplyAbilityHitoHito()
     {
-        // Логика применения способности 4 (Ой ой но Ми)
+        // Логика применения способности 4 (Хито Хито но Ми)
         // Применяем способность
         yield return new WaitForSeconds(1f); // Пример времени действия способности
                                              // Возвращаем персонажу обычные характеристики
@@ -75,23 +75,23 @@ public class Doodler : MonoBehaviour
         {
             Vector2 currentVelocity = rb.velocity; // Сохраняем текущую скорость перед изменением
 
-            Transform fruct = other.transform; // Объявляем переменную fruct и присваиваем ей значение other.transform
+            Transform fruit = other.transform; // Объявляем переменную fruct и присваиваем ей значение other.transform
 
-            if (fruct == fruct1) // Проверяем, с каким фруктом столкнулся персонаж
+            if (fruit == GomuGomuFruit) // Проверяем, с каким фруктом столкнулся персонаж
             {
-                StartCoroutine(ApplyAbility1()); // Применяем способность 1 (Гому-Гому Фрукт)
+                StartCoroutine(ApplyAbilityGomuGomu()); // Применяем способность 1 (Гому-Гому Фрукт)
             }
-            else if (fruct == fruct2)
+            else if (fruit == GashaGashaFruit)
             {
-                StartCoroutine(ApplyAbility2()); // Применяем способность 2 (Вапу но Ми)
+                StartCoroutine(ApplyAbilityGashaGasha()); // Применяем способность 2 (Вапу но Ми)
             }
-            else if (fruct == fruct3)
+            else if (fruit == MokuMokuFruit)
             {
-                StartCoroutine(ApplyAbility3()); // Применяем способность 3 (Фува но Ми)
+                StartCoroutine(ApplyAbilityMokuMoku()); // Применяем способность 3 (Моку Моку но Ми)
             }
-            else if (fruct == fruct4)
+            else if (fruit == HitoHitoFruit)
             {
-                StartCoroutine(ApplyAbility4()); // Применяем способность 4 (Ой ой но Ми)
+                StartCoroutine(ApplyAbilityHitoHito()); // Применяем способность 4 (Ой ой но Ми)
             }
 
             Destroy(other.gameObject); // Уничтожаем фрукт после столкновения

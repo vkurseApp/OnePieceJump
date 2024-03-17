@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
     public TextMeshProUGUI ScoreTxt;
     private int score;
 
-    public Transform fruct1, fruct2, fruct3, fruct4;
+    public Transform GomuGomuFruit, GashaGashaFruit, MokuMokuFruit, HitoHitoFruit;
     public float percentSpawnFruct;
 
     void Start()
@@ -64,19 +64,19 @@ public class Spawner : MonoBehaviour
                     switch (randomFruct)
                     {
                         case 1:
-                            fruct = Instantiate(fruct1);
+                            fruct = Instantiate(GomuGomuFruit);
                             break;
                         case 2:
-                            fruct = Instantiate(fruct2);
+                            fruct = Instantiate(GashaGashaFruit);
                             break;
                         case 3:
-                            fruct = Instantiate(fruct3);
+                            fruct = Instantiate(MokuMokuFruit);
                             break;
                         case 4:
-                            fruct = Instantiate(fruct4);
+                            fruct = Instantiate(HitoHitoFruit);
                             break;
                         default:
-                            fruct = Instantiate(fruct1);
+                            fruct = Instantiate(GomuGomuFruit);
                             break;
                     }
 
