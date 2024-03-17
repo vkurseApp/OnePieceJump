@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-        ScoreTxt.text = "Очки: " + score;
+        ScoreTxt.text = "Score: " + score;
 
         if (lastSpawnY < 250)
         {
@@ -112,6 +112,6 @@ public class Spawner : MonoBehaviour
         lastSpawnY = 0;
         score = 0;
         cam.position = new Vector3(0, 0, -10); // ���������� ������ �� ��������� �������
-        ScoreTxt.text = "Очки: " + score; // ��������� ����� � ������
+        ScoreTxt.text = "Scores: " + score; // ��������� ����� � ������
     }
 }
