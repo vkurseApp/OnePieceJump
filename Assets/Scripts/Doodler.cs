@@ -1,6 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Doodler : MonoBehaviour
 {
@@ -8,45 +9,10 @@ public class Doodler : MonoBehaviour
     public float JumpForce; // сила прыжка по Y
     public float MoveDecreaser; // замедление движения по X
     private Rigidbody2D rb;
-
-    public Transform GomuGomuFruit, GashaGashaFruit, MokuMokuFruit, HitoHitoFruit; // префабы фруктов
-
-
     private Animator anim;
-
-    IEnumerator ApplyAbilityGomuGomu()
-    {
-        // Логика применения способности 1 (Гому-Гому Фрукт)
-        // Применяем способность
-        yield return new WaitForSeconds(1f); // Пример времени действия способности
-                                             // Возвращаем персонажу обычные характеристики
-    }
-
-    IEnumerator ApplyAbilityGashaGasha()
-    {
-        // Логика применения способности 2 (Гаша Гаша но Ми)
-        // Применяем способность
-        yield return new WaitForSeconds(1f); // Пример времени действия способности
-                                             // Возвращаем персонажу обычные характеристики
-    }
-
-    IEnumerator ApplyAbilityMokuMoku()
-    {
-        // Логика применения способности 3 (Моку Моку но Ми)
-        // Применяем способность
-        yield return new WaitForSeconds(1f); // Пример времени действия способности
-                                             // Возвращаем персонажу обычные характеристики
-    }
-
-    IEnumerator ApplyAbilityHitoHito()
-    {
-        // Логика применения способности 4 (Хито Хито но Ми)
-        // Применяем способность
-        yield return new WaitForSeconds(1f); // Пример времени действия способности
-                                             // Возвращаем персонажу обычные характеристики
-    }
-
-
+    public Transform GomuGomuFruit, GashaGashaFruit, MokuMokuFruit, HitoHitoFruit; // префабы фруктов
+    public TextMeshProUGUI ScoreTxt;
+    public int score;
 
 
     void Start()
@@ -58,55 +24,76 @@ public class Doodler : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Platform")) // Проверяем тэг объекта, чтобы определить, что это платформа
+        if (collision.gameObject.CompareTag("Platform"))
         {
-            if (rb.velocity.y <= 0.5f) // Проверка отрицательной скорости по Y (вертикальной скорости) объекта, т.е. падает ли объект
+            if (rb.velocity.y <= 0.5f)
             {
-                Vector2 Velocity = rb.velocity; // Velocity = вектор текущей скорости объекта
-                Velocity.y = JumpForce; // составляющая Y Velocity = сила прыжка
-                rb.velocity = Velocity; // Задаём вектор текущей скорости объекта
+                Vector2 Velocity = rb.velocity;
+                Velocity.y = JumpForce;
+                rb.velocity = Velocity;
             }
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Fruct")) // Проверяем тэг объекта, чтобы определить, что это фрукт
+        if (other.gameObject.CompareTag("GomuGomuFruit"))
         {
-            Vector2 currentVelocity = rb.velocity; // Сохраняем текущую скорость перед изменением
-
-            Transform fruit = other.transform; // Объявляем переменную fruct и присваиваем ей значение other.transform
-
-            if (fruit == GomuGomuFruit) // Проверяем, с каким фруктом столкнулся персонаж
-            {
-                StartCoroutine(ApplyAbilityGomuGomu()); // Применяем способность 1 (Гому-Гому Фрукт)
-            }
-            else if (fruit == GashaGashaFruit)
-            {
-                StartCoroutine(ApplyAbilityGashaGasha()); // Применяем способность 2 (Вапу но Ми)
-            }
-            else if (fruit == MokuMokuFruit)
-            {
-                StartCoroutine(ApplyAbilityMokuMoku()); // Применяем способность 3 (Моку Моку но Ми)
-            }
-            else if (fruit == HitoHitoFruit)
-            {
-                StartCoroutine(ApplyAbilityHitoHito()); // Применяем способность 4 (Ой ой но Ми)
-            }
-
-            Destroy(other.gameObject); // Уничтожаем фрукт после столкновения
-
-            rb.velocity = currentVelocity; // Восстанавливаем сохраненную скорость после уничтожения фрукта
+            StartCoroutine(ApplyAbilityGomuGomu());
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("GashaGashaFruit"))
+        {
+            StartCoroutine(ApplyAbilityGashaGasha());
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("MokuMokuFruit"))
+        {
+            StartCoroutine(ApplyAbilityMokuMoku());
+            Destroy(other.gameObject);
+        }
+        if (other.gameObject.CompareTag("HitoHitoFruit"))
+        {
+            StartCoroutine(ApplyAbilityHitoHito());
+            Destroy(other.gameObject);
         }
     }
 
+    IEnumerator ApplyAbilityGomuGomu()
+    {
+        float originalJumpForce = 25; // Сохраняем оригинальное значение JumpForce
+        JumpForce += 2; // Увеличиваем JumpForce на 2
+        ScoreTxt.text = "Score: " + score.ToString();
 
+        yield return new WaitForSeconds(5f); // Устанавливаем длительность увеличенного JumpForce
+
+        JumpForce = originalJumpForce; // Возвращаем оригинальное значение JumpForce
+    }
+
+    IEnumerator ApplyAbilityGashaGasha()
+    {
+        yield return new WaitForSeconds(1f);// Устанавливаем длительность
+    }
+
+    IEnumerator ApplyAbilityMokuMoku()
+    {
+        yield return new WaitForSeconds(1f);// Устанавливаем длительность
+    }
+
+    IEnumerator ApplyAbilityHitoHito()
+    {
+        score += 5000; // Увеличиваем количество очков на 5000
+        ScoreTxt.text = "Score: " + score.ToString(); // Обновляем текст с количеством очков на канвасе
+
+        yield return null; // Длительность не требуется
+
+    }
 
 
 
     void PlayOdaAnimation()
     {
-        anim.Play("oda"); // Проигрываем анимацию "oda"
+        anim.Play("oda");
     }
 
     void Update()
@@ -118,7 +105,7 @@ public class Doodler : MonoBehaviour
             Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Vector3 direction = mousePosition - transform.position;
 
-            if (Mathf.Abs(direction.x) > 0.1f) // Проверка на значительное отклонение позиции мыши по X от центра персонажа
+            if (Mathf.Abs(direction.x) > 0.1f)
             {
                 if (direction.x < 0)
                 {

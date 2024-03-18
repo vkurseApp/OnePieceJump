@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Fruct
   - Platform
+  - GomuGomuFruit
+  - GashaGashaFruit
+  - MokuMokuFruit
+  - HitoHitoFruit
   layers:
   - Default
   - TransparentFX
