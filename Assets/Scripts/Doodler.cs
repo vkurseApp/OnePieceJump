@@ -12,7 +12,7 @@ public class Doodler : MonoBehaviour
     private Animator anim;
     public Transform GomuGomuFruit, GashaGashaFruit, MokuMokuFruit, HitoHitoFruit; // префабы фруктов
     public TextMeshProUGUI ScoreTxt;
-    public int score;
+    public int score = 0;
 
 
     void Start()

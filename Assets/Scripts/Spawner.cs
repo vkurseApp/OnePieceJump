@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.Resources;
 
 public class Spawner : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Spawner : MonoBehaviour
     private float rangeIncreaser;
     public TextMeshProUGUI ScoreTxt;
     private int score;
-
+    private Doodler ddlr;
     public Transform GomuGomuFruit, GashaGashaFruit, MokuMokuFruit, HitoHitoFruit;
     public float percentSpawnFruct;
 
@@ -24,11 +25,13 @@ public class Spawner : MonoBehaviour
         cam = Camera.main.transform;
         lastSpawnY = 0;
         ResetGame(); // ��������� ����� ���� ��� ������
+        ddlr = FindObjectOfType<Doodler>();
     }
 
     void Update()
     {
-        ScoreTxt.text = "Score: " + score;
+
+        ScoreTxt.text = "Score: " + (ddlr.score + score).ToString();
 
         if (lastSpawnY < 250)
         {
@@ -112,6 +115,6 @@ public class Spawner : MonoBehaviour
         lastSpawnY = 0;
         score = 0;
         cam.position = new Vector3(0, 0, -10); // ���������� ������ �� ��������� �������
-        ScoreTxt.text = "Scores: " + score; // ��������� ����� � ������
+        ScoreTxt.text = "Scores: 0"; // ��������� ����� � ������
     }
 }
