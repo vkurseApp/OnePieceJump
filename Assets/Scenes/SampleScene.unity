@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6303e198bd992d540a81f010e7408fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 4
+  MoveSpeed: 1
   JumpForce: 25
   MoveDecreaser: 0.98
   GomuGomuFruit: {fileID: 665102382840574657, guid: 7db42414989caf344a437a1c579c7997, type: 3}
@@ -1764,7 +1764,7 @@ MonoBehaviour:
   GashaGashaFruit: {fileID: 8524024279522583061, guid: b3ee00991aa7db84fafa4c4d671c75e9, type: 3}
   MokuMokuFruit: {fileID: 3442678757293330747, guid: c8cd92ae22696d643a98eb8f99f2dc9c, type: 3}
   HitoHitoFruit: {fileID: 2927948201701853231, guid: 1a17b6217237feb488eb8bc980af3826, type: 3}
-  percentSpawnFruct: 1
+  percentSpawnFruct: 0.2
 --- !u!4 &1809188041
 Transform:
   m_ObjectHideFlags: 0
