@@ -77,7 +77,12 @@ public class Doodler : MonoBehaviour
 
     IEnumerator ApplyAbilityMokuMoku()
     {
-        yield return new WaitForSeconds(1f);// Устанавливаем длительность
+        float originalGravityScale = 2.5f; // Устанавливаем значение гравитации для полета
+        rb.gravityScale = 0; // Устанавливаем гравитацию в 0, чтобы персонаж мог летать
+
+        yield return new WaitForSeconds(5f); // Устанавливаем длительность полета
+
+        rb.gravityScale = originalGravityScale; // Возвращаем значение гравитации для персонажа
     }
 
     IEnumerator ApplyAbilityHitoHito()
