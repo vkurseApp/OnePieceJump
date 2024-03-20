@@ -9,7 +9,8 @@ public class Spawner : MonoBehaviour
     public float minX, maxX;
     public float YrangeMin, YrangeMax;
     public float cameraDistance;
-    public Transform platformPrefab, platformMovePrefab, platformDestroyPrefab;
+    public Transform platformPrefab, platformMovePrefab;
+    public Transform platformDestroyPrefab;
     public float percentSpawn;
     private Transform cam;
     private float lastSpawnY;

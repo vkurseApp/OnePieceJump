@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3919351686890521010}
   - component: {fileID: 1713496734370068935}
   - component: {fileID: 1997149898868007445}
+  - component: {fileID: -7882201662718306868}
   m_Layer: 0
   m_Name: platformDestroyPrefab
   m_TagString: Platform
@@ -178,3 +179,15 @@ PlatformEffector2D:
   m_UseSideFriction: 0
   m_UseSideBounce: 0
   m_SideArc: 1
+--- !u!114 &-7882201662718306868
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6337497566429475014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 832009ab58605435eb9bb4c866495f80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
