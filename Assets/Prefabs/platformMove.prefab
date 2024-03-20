@@ -194,3 +194,4 @@ MonoBehaviour:
   speed: 0
   minX: 0
   maxX: 0
+  isDis: 0

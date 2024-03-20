@@ -9,13 +9,13 @@ public class Spawner : MonoBehaviour
     public float minX, maxX;
     public float YrangeMin, YrangeMax;
     public float cameraDistance;
-    public Transform platformPrefab, platformMovePrefab;
+    public Transform platformPrefab, platformMovePrefab, platformDestroyPrefab;
     public float percentSpawn;
     private Transform cam;
     private float lastSpawnY;
     private float rangeIncreaser;
     public TextMeshProUGUI ScoreTxt;
-    private int score;
+    public int score;
     private Doodler ddlr;
     public Transform GomuGomuFruit, GashaGashaFruit, MokuMokuFruit, HitoHitoFruit;
     public float percentSpawnFruct;
@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
     {
         cam = Camera.main.transform;
         lastSpawnY = 0;
-        ResetGame(); // ��������� ����� ���� ��� ������
+        ResetGame();
         ddlr = FindObjectOfType<Doodler>();
     }
 
@@ -43,7 +43,14 @@ public class Spawner : MonoBehaviour
             Transform platform;
 
             if (Random.value < percentSpawn)
-                platform = Instantiate(platformPrefab);
+            {
+                float randomValue = Random.value;
+
+                if (randomValue < 0.33f)
+                    platform = Instantiate(platformDestroyPrefab);
+                else
+                    platform = Instantiate(platformPrefab);
+            }
             else
                 platform = Instantiate(platformMovePrefab);
 
@@ -92,16 +99,25 @@ public class Spawner : MonoBehaviour
                 {
                     Transform newPlatform;
                     if (Random.value < percentSpawn)
-                        platform = Instantiate(platformPrefab);
-                    else
-                        platform = Instantiate(platformMovePrefab);
+                    {
+                        float randomValue = Random.value;
 
-                    platform.position = new Vector3(
+                        if (randomValue < 0.33f)
+                            newPlatform = Instantiate(platformDestroyPrefab);
+                        else if (randomValue < 0.66f)
+                            newPlatform = Instantiate(platformDestroyPrefab);
+                        else
+                            newPlatform = Instantiate(platformMovePrefab);
+                    }
+                    else
+                        newPlatform = Instantiate(platformDestroyPrefab);
+
+                    newPlatform.position = new Vector3(
                         Random.Range(minX, maxX),
                         lastSpawnY + Random.Range(YrangeMin + (rangeIncreaser * 0.9f), YrangeMax + (rangeIncreaser * 1.1f)),
                         0);
 
-                    lastSpawnY = platform.position.y;
+                    lastSpawnY = newPlatform.position.y;
 
                     if (lastSpawnY - 12 > 0)
                         score = Mathf.CeilToInt((lastSpawnY - 12) * 100);
@@ -114,7 +130,7 @@ public class Spawner : MonoBehaviour
     {
         lastSpawnY = 0;
         score = 0;
-        cam.position = new Vector3(0, 0, -10); // ���������� ������ �� ��������� �������
-        ScoreTxt.text = "Scores: 0"; // ��������� ����� � ������
+        cam.position = new Vector3(0, 0, -10);
+        ScoreTxt.text = "Scores: 0";
     }
 }
