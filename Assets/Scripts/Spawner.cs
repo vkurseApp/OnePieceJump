@@ -15,7 +15,7 @@ public class Spawner : MonoBehaviour
     private float lastSpawnY;
     private float rangeIncreaser;
     public TextMeshProUGUI ScoreTxt;
-    private int score;
+    public int score;
     private Doodler ddlr;
     public Transform GomuGomuFruit, GashaGashaFruit, MokuMokuFruit, HitoHitoFruit;
     public float percentSpawnFruct;
@@ -24,7 +24,7 @@ public class Spawner : MonoBehaviour
     {
         cam = Camera.main.transform;
         lastSpawnY = 0;
-        ResetGame(); // ��������� ����� ���� ��� ������
+        ResetGame();
         ddlr = FindObjectOfType<Doodler>();
     }
 
@@ -114,7 +114,7 @@ public class Spawner : MonoBehaviour
     {
         lastSpawnY = 0;
         score = 0;
-        cam.position = new Vector3(0, 0, -10); // ���������� ������ �� ��������� �������
-        ScoreTxt.text = "Scores: 0"; // ��������� ����� � ������
+        cam.position = new Vector3(0, 0, -10);
+        ScoreTxt.text = "Scores: 0";
     }
 }
