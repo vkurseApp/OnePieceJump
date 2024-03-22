@@ -381,6 +381,7 @@
 "Assets/Scripts/BackgroundController.cs"
 "Assets/Scripts/BreakablePlatform.cs"
 "Assets/Scripts/CameraMover.cs"
+"Assets/Scripts/ChangePlatformSprite.cs"
 "Assets/Scripts/Doodler.cs"
 "Assets/Scripts/PlatformMove.cs"
 "Assets/Scripts/Restart.cs"

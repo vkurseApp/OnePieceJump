@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Doodler.cs" />
     <Compile Include="Assets\Scripts\CameraMover.cs" />
     <Compile Include="Assets\Scripts\PlatformMove.cs" />
+    <Compile Include="Assets\Scripts\ChangePlatformSprite.cs" />
     <Compile Include="Assets\Scripts\Restart.cs" />
   </ItemGroup>
   <ItemGroup>

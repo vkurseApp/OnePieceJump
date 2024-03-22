@@ -11,13 +11,17 @@ public class BackgroundController : MonoBehaviour
     public Transform backgroundTransform4;
     public Transform backgroundTransform5;
     public Transform backgroundTransform6;
+
     public TextMeshProUGUI scoreText;
-    public float transparentAlpha = 0.3f; // Прозрачность для значения больше 50000
-    public float opaqueAlpha = 1f; // Непрозрачность для значения меньше или равно 50000
+
+    public float transparentAlpha = 0.3f;
+    public float opaqueAlpha = 1f;
+
     public VideoPlayer videoPlayer; // Ссылка на VideoPlayer
     public VideoPlayer videoPlayer2;
     public VideoPlayer videoPlayer3;
     public VideoPlayer videoPlayer4;
+
     private bool videoPlayed2 = false;
     private bool videoPlayed3 = false;
     private bool videoPlayed4 = false;
@@ -29,9 +33,10 @@ public class BackgroundController : MonoBehaviour
     private float currentAlpha3 = 1f; // Текущее значение прозрачности для третьего фона
 
     public VideoClip videoClip; // Ваш видеофайл
-    public VideoClip videoClip2; // Ваш видеофайл
-    public VideoClip videoClip3; // Ваш видеофайл
-    public VideoClip videoClip4; // Ваш видеофайл
+    public VideoClip videoClip2;
+    public VideoClip videoClip3;
+    public VideoClip videoClip4;
+
     public RawImage Screen; // Ссылка на Raw Image для отображения видео
     public RawImage Screen2;
     public RawImage Screen3;
