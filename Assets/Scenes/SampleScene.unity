@@ -833,7 +833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6303e198bd992d540a81f010e7408fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MoveSpeed: 1
+  MoveSpeed: 2
   JumpForce: 25
   MoveDecreaser: 0.98
   GomuGomuFruit: {fileID: 665102382840574657, guid: 7db42414989caf344a437a1c579c7997, type: 3}
