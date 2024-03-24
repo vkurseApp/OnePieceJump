@@ -11,10 +11,20 @@ public class BackgroundController : MonoBehaviour
     public Transform backgroundTransform4;
     public Transform backgroundTransform5;
     public Transform backgroundTransform6;
+
     public TextMeshProUGUI scoreText;
-    public float transparentAlpha = 0.3f; // Прозрачность для значения больше 50000
-    public float opaqueAlpha = 1f; // Непрозрачность для значения меньше или равно 50000
+
+    public float transparentAlpha = 0.3f;
+    public float opaqueAlpha = 1f;
+
     public VideoPlayer videoPlayer; // Ссылка на VideoPlayer
+    public VideoPlayer videoPlayer2;
+    public VideoPlayer videoPlayer3;
+    public VideoPlayer videoPlayer4;
+
+    private bool videoPlayed2 = false;
+    private bool videoPlayed3 = false;
+    private bool videoPlayed4 = false;
     private bool videoPlayed = false; // Флаг для отслеживания проигрывания видео
 
     private float alphaChangeSpeed = 1f / 3f; // Скорость изменения прозрачности за секунду
@@ -23,7 +33,15 @@ public class BackgroundController : MonoBehaviour
     private float currentAlpha3 = 1f; // Текущее значение прозрачности для третьего фона
 
     public VideoClip videoClip; // Ваш видеофайл
+    public VideoClip videoClip2;
+    public VideoClip videoClip3;
+    public VideoClip videoClip4;
+
     public RawImage Screen; // Ссылка на Raw Image для отображения видео
+    public RawImage Screen2;
+    public RawImage Screen3;
+    public RawImage Screen4;
+
 
     void Update()
     {
@@ -37,12 +55,35 @@ public class BackgroundController : MonoBehaviour
             UpdateBackgroundAlpha(backgroundTransform5, totalScore, 100000, ref currentAlpha2);
             UpdateBackgroundAlpha(backgroundTransform6, totalScore, 150000, ref currentAlpha3);
 
-            if (totalScore >= 100000 && !videoPlayed)
+            if (totalScore >= 50000 && !videoPlayed)
             {
                 videoPlayer.Play();
                 Time.timeScale = 0; // Пауза для всей игры
                 Screen.enabled = true; // Показываем Raw Image для видео
                 videoPlayed = true;
+            }
+            if (totalScore >= 100000 && !videoPlayed2)
+            {
+                videoPlayer2.Play();
+                Time.timeScale = 0; // Пауза для всей игры
+                Screen2.enabled = true; // Показываем Raw Image для второго видео
+                videoPlayed2 = true;
+            }
+
+            if (totalScore >= 150000 && !videoPlayed3)
+            {
+                videoPlayer3.Play();
+                Time.timeScale = 0; // Пауза для всей игры
+                Screen3.enabled = true; // Показываем Raw Image для третьего видео
+                videoPlayed3 = true;
+            }
+
+            if (totalScore >= 200000 && !videoPlayed4)
+            {
+                videoPlayer4.Play();
+                Time.timeScale = 0; // Пауза для всей игры
+                Screen4.enabled = true; // Показываем Raw Image для четвертого видео
+                videoPlayed4 = true;
             }
         }
     }
@@ -56,6 +97,30 @@ public class BackgroundController : MonoBehaviour
         Screen.enabled = false; // Убедитесь, что Raw Image невидимо
 
         videoPlayer.loopPointReached += OnVideoFinished; // Добавляем обработчик события завершения проигрывания видео
+
+        videoPlayer2 = gameObject.AddComponent<VideoPlayer>(); // Добавляем VideoPlayer к объекту
+        videoPlayer2.playOnAwake = false;
+        videoPlayer2.clip = videoClip2;
+        Screen2.texture = videoPlayer2.texture; // Привязываем текстуру видео к Raw Image
+        Screen2.enabled = false; // Убедитесь, что Raw Image невидимо
+
+        videoPlayer2.loopPointReached += OnVideoFinished; // Добавляем обработчик события завершения проигрывания видео
+
+        videoPlayer3 = gameObject.AddComponent<VideoPlayer>(); // Добавляем VideoPlayer к объекту
+        videoPlayer3.playOnAwake = false;
+        videoPlayer3.clip = videoClip3;
+        Screen3.texture = videoPlayer3.texture; // Привязываем текстуру видео к Raw Image
+        Screen3.enabled = false; // Убедитесь, что Raw Image невидимо
+
+        videoPlayer3.loopPointReached += OnVideoFinished; // Добавляем обработчик события завершения проигрывания видео
+
+        videoPlayer4 = gameObject.AddComponent<VideoPlayer>(); // Добавляем VideoPlayer к объекту
+        videoPlayer4.playOnAwake = false;
+        videoPlayer4.clip = videoClip4;
+        Screen4.texture = videoPlayer4.texture; // Привязываем текстуру видео к Raw Image
+        Screen4.enabled = false; // Убедитесь, что Raw Image невидимо
+
+        videoPlayer4.loopPointReached += OnVideoFinished; // Добавляем обработчик события завершения проигрывания видео
     }
 
     void OnVideoFinished(VideoPlayer vp)
