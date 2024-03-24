@@ -62,7 +62,7 @@ public class Doodler : MonoBehaviour
     IEnumerator ApplyAbilityGomuGomu()
     {
         float originalJumpForce = 25; // Сохраняем оригинальное значение JumpForce
-        JumpForce += 2; // Увеличиваем JumpForce на 2
+        JumpForce += 10; // Увеличиваем JumpForce на 2
 
         yield return new WaitForSeconds(5f); // Устанавливаем длительность увеличенного JumpForce
 
@@ -71,7 +71,7 @@ public class Doodler : MonoBehaviour
 
     IEnumerator ApplyAbilityGashaGasha()
     {
-        float originalMoveSpeed = 1; // Сохраняем оригинальное значение MoveSpeed
+        float originalMoveSpeed = 3; // Сохраняем оригинальное значение MoveSpeed
         MoveSpeed = 10; // Устанавливаем новое значение MoveSpeed
 
         yield return new WaitForSeconds(5f); // Устанавливаем длительность увеличенной скорости
