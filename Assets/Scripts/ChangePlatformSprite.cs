@@ -15,7 +15,7 @@ public class ChangePlatformSprite : MonoBehaviour
         int totalScore;
         if (int.TryParse(scoreText.text.Replace("Score: ", ""), out totalScore))
         {
-            if (totalScore == 0)
+            if (totalScore <= 50000)
             {
                 ChangeSprite(ArabastaPlatform);
             }
