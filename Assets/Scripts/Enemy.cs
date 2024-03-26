@@ -1,22 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    public GameObject powerPrefab; // ������ ����
     public Sprite[] bossesSprites;
+    public GameObject powerObject;
     private SpriteRenderer bossRenderer; // ��� ��������� �������
-    public float shootingInterval = 20f; // �������� ����� ����������
+    // public float shootingInterval = 2f; // �������� ����� ����������
     public TextMeshProUGUI scoreText;
-    private float shootingTimer;
-
+    // private float shootingTimer;
 
     void Awake()
     {
         bossRenderer = GetComponent<SpriteRenderer>();
         bossRenderer.enabled = false; // ���������� ������ ���������
+        // powerObject = powerObject.GetComponent<GameObject>();
     }
     void Update()
     {
@@ -29,13 +27,6 @@ public class Enemy : MonoBehaviour
         else
         {
             bossRenderer.enabled = false;
-        }
-
-        shootingTimer += Time.deltaTime;
-        if (shootingTimer >= shootingInterval)
-        {
-            Shoot();
-            shootingTimer = 0f;
         }
     }
 
@@ -59,21 +50,5 @@ public class Enemy : MonoBehaviour
             }
         }
         return index;
-    }
-    void Shoot()
-    {
-        GameObject power = Instantiate(powerPrefab);
-        Power powerShotScript = power.GetComponent<Power>();
-
-        if (powerShotScript != null)
-        {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
-            if (player != null)
-            {
-                Vector2 direction = (player.transform.position - transform.position).normalized;
-                powerShotScript.direction = direction;
-                powerShotScript.ActivateAndSetSprite();
-            }
-        }
     }
 }

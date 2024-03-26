@@ -5,14 +5,6 @@ using UnityEngine.UI;
 
 public class BackgroundController : MonoBehaviour
 {
-    // public Transform backgroundTransform1;
-    // public Transform backgroundTransform2;
-    // public Transform backgroundTransform3;
-    // public Transform backgroundTransform4;
-    // public Transform backgroundTransform5;
-    // public Transform backgroundTransform6;
-    // public Transform backgroundTransform7;
-
     public TextMeshProUGUI scoreText;
 
     public float transparentAlpha = 0.3f;
@@ -29,9 +21,9 @@ public class BackgroundController : MonoBehaviour
     private bool videoPlayed = false; // ���� ��� ������������ ������������ �����
 
     private float alphaChangeSpeed = 1f / 3f; // �������� ��������� ������������ �� �������
-    private float currentAlpha1 = 1f; // ������� �������� ������������ ��� ������� ����
-    private float currentAlpha2 = 1f; // ������� �������� ������������ ��� ������� ����
-    private float currentAlpha3 = 1f; // ������� �������� ������������ ��� �������� ����
+    // private float currentAlpha1 = 1f; // ������� �������� ������������ ��� ������� ����
+    // private float currentAlpha2 = 1f; // ������� �������� ������������ ��� ������� ����
+    // private float currentAlpha3 = 1f; // ������� �������� ������������ ��� �������� ����
 
     public VideoClip videoClip; // ��� ���������
     public VideoClip videoClip2;
@@ -49,15 +41,8 @@ public class BackgroundController : MonoBehaviour
         int totalScore;
         if (int.TryParse(scoreText.text.Replace("Score: ", ""), out totalScore))
         {
-            // UpdateBackgroundAlpha(backgroundTransform1, totalScore, 50000, ref currentAlpha1);
-            // UpdateBackgroundAlpha(backgroundTransform2, totalScore, 100000, ref currentAlpha2);
-            // UpdateBackgroundAlpha(backgroundTransform3, totalScore, 150000, ref currentAlpha3);
-            // UpdateBackgroundAlpha(backgroundTransform4, totalScore, 50000, ref currentAlpha1);
-            // UpdateBackgroundAlpha(backgroundTransform5, totalScore, 100000, ref currentAlpha2);
-            // UpdateBackgroundAlpha(backgroundTransform6, totalScore, 150000, ref currentAlpha3);
-            // UpdateBackgroundAlpha(backgroundTransform7, totalScore, 200000, ref currentAlpha3);
 
-            if (totalScore >= 50000 && !videoPlayed)
+            if (totalScore >= 100000 && !videoPlayed)
             {
                 videoPlayer.Play();
                 Time.timeScale = 0; // ����� ��� ���� ����

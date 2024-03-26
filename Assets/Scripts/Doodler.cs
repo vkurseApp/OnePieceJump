@@ -1,7 +1,6 @@
 using System.Collections;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class Doodler : MonoBehaviour
 {
@@ -10,8 +9,9 @@ public class Doodler : MonoBehaviour
     public float MoveDecreaser; // замедление движения по X
     private Rigidbody2D rb;
     private Animator anim;
-    public Transform GomuGomuFruit, GashaGashaFruit, MokuMokuFruit, HitoHitoFruit; // префабы фруктов
     public TextMeshProUGUI ScoreTxt;
+    public GameObject Panel, Player; // ссылка на Canvas.Panel
+    public RectTransform ScoreTxtEnd; // ссылка на Canvas.Text(TMP)
     public int score = 0;
 
 
@@ -57,6 +57,12 @@ public class Doodler : MonoBehaviour
             StartCoroutine(ApplyAbilityHitoHito());
             Destroy(other.gameObject);
         }
+        if (other.tag == "BossPower" || other.tag == "Sea")
+        {
+            Panel.SetActive(true); // активируем Canvas.Panel
+            ScoreTxtEnd.localPosition = new Vector3(20, 150, 0);
+            Destroy(Player);
+        }
     }
 
     IEnumerator ApplyAbilityGomuGomu()
@@ -95,7 +101,6 @@ public class Doodler : MonoBehaviour
         ScoreTxt.text = "Score: " + score.ToString(); // Обновляем текст с количеством очков на канвасе
 
         yield return null; // Длительность не требуется
-
     }
 
     void PlayOdaAnimation()

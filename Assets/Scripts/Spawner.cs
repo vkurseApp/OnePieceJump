@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System.Resources;
 
 public class Spawner : MonoBehaviour
 {
@@ -31,7 +28,7 @@ public class Spawner : MonoBehaviour
 
     void Update()
     {
-
+        Transform platform;
         ScoreTxt.text = "Score: " + (ddlr.score + score).ToString();
 
         if (lastSpawnY < 250)
@@ -41,8 +38,6 @@ public class Spawner : MonoBehaviour
 
         if (cam.position.y + cameraDistance > lastSpawnY)
         {
-            Transform platform;
-
             if (Random.value < percentSpawn)
             {
                 float randomValue = Random.value;
@@ -123,6 +118,19 @@ public class Spawner : MonoBehaviour
                     if (lastSpawnY - 12 > 0)
                         score = Mathf.CeilToInt((lastSpawnY - 12) * 100);
                 }
+            }
+        }
+        DestroyPlatformsOutsideCamera();
+    }
+
+    void DestroyPlatformsOutsideCamera()
+    {
+        GameObject[] platforms = GameObject.FindGameObjectsWithTag("Platform");
+        foreach (GameObject platform in platforms)
+        {
+            if (platform.transform.position.y < cam.position.y - cameraDistance)
+            {
+                Destroy(platform);
             }
         }
     }

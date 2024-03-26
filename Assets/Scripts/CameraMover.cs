@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 //using TMPro; // работа с текстом
 
@@ -9,7 +7,7 @@ public class CameraMover : MonoBehaviour
   public float speed; // скорость следования камеры за персонажем
   public GameObject Panel; // ссылка на Canvas.Panel
   public RectTransform ScoreTxt; // ссылка на Canvas.Text(TMP)
-//  public TextMeshProUGUI BestScoreText; // ссылка на кмп.TextMeshPro-Text(UI) об.Canvas.TextBest
+                                 //  public TextMeshProUGUI BestScoreText; // ссылка на кмп.TextMeshPro-Text(UI) об.Canvas.TextBest
 
   private void Start()
   {
@@ -29,18 +27,4 @@ public class CameraMover : MonoBehaviour
       }
     }
   }
-
-  private void OnTriggerEnter2D (Collider2D collision) // столкновение по триггеру с объектом "collision"
-  {
-	//Debug.Log ("произошло столкновение"); // для отладки, вывод сообщения в консоль
-    if (collision.gameObject.GetComponent<Doodler>()) // объект "collision" имеет компонент "Doodler"
-    {
-      Panel.SetActive(true); // активируем Canvas.Panel
-      ScoreTxt.localPosition = new Vector3 (20, 150, 0); // меняем позицию Canvas.Text(TMP)
-//      BestScoreText.text = "Лучший результат: " + PlayerPrefs.GetInt("score", 1);
-    }
-
-    Destroy (collision.gameObject); // удаляем объект "collision", с которым столкнулись
-  }
-
 }
